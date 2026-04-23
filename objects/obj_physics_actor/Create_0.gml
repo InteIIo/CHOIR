@@ -2,8 +2,9 @@
 vel_x = 0;
 vel_y = 0;
 
-grav = 2.5;
-def_grav = 2.5;
+def_grav = 3;
+grav = def_grav;
+
 term_vel = 160;
 
 //Everything that can be collided with

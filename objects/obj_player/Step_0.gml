@@ -1,5 +1,5 @@
 get_controls();
-
+if keyboard_check_pressed(vk_f5) {room_restart();}
 //Update consistant values
 move_dir = right - left;
 hp = max_hp - injury - insanity;

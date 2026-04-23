@@ -17,7 +17,7 @@ vault_input_window = 12;
 vault_height =  64;
 vault_boost_spd = 7;
 
-jump_force = 6;
+jump_force = 7;
 jump_timer = 0;
 jump_time = 10;
 
@@ -53,5 +53,6 @@ function do_jump() {
 	if jump_timer > 0 && jump{
 		jump_timer--;
 		vel_y -= jump_force;
+	if keyboard_check_released(vk_space) {vel_y = -1;}
 	} else {jump_timer = 0;}
 }

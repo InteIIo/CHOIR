@@ -10,3 +10,6 @@ seg_x += (hp/max_hp)*hp_bar_length;
 draw_line_width_colour(seg_x, 16, seg_x+(injury/max_hp)*hp_bar_length, 16, 128, c_red, c_red);
 seg_x += (injury/max_hp)*hp_bar_length;
 draw_line_width_colour(seg_x, 16, seg_x+(insanity/max_hp)*hp_bar_length, 16, 128, c_purple, c_purple);
+
+if keyboard_check_pressed(vk_delete) {injury+= 10}
+if keyboard_check_pressed(vk_alt) {insanity+= 5}
