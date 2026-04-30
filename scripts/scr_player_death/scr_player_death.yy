@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_player_states",
+  "%Name":"scr_player_death",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_player_states",
+  "name":"scr_player_death",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",
