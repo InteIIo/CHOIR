@@ -11,11 +11,14 @@
   "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"Objects","folderPath":"folders/Objects.yy","name":"Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Abstract Objects","folderPath":"folders/Objects/Abstract Objects.yy","name":"Abstract Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Abstract and Controllers","folderPath":"folders/Objects/Abstract and Controllers.yy","name":"Abstract and Controllers","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Enemies","folderPath":"folders/Objects/Enemies.yy","name":"Enemies","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Hallucinations","folderPath":"folders/Objects/Enemies/Hallucinations.yy","name":"Hallucinations","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Rooms","folderPath":"folders/Rooms.yy","name":"Rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Scripts","folderPath":"folders/Scripts.yy","name":"Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Enemies","folderPath":"folders/Sprites/Enemies.yy","name":"Enemies","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Hallucinations","folderPath":"folders/Sprites/Enemies/Hallucinations.yy","name":"Hallucinations","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[
     {"link":"io.gamemaker.gm_effect_glow-1.0.0","name":"io.gamemaker.gm_effect_glow-1.0.0","path":"io.gamemaker.gm_effect_glow-1.0.0.yyp",},
@@ -29,6 +32,8 @@
   "name":"CHOIR",
   "resources":[
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},},
+    {"id":{"name":"obj_glare","path":"objects/obj_glare/obj_glare.yy",},},
+    {"id":{"name":"obj_hallucinations","path":"objects/obj_hallucinations/obj_hallucinations.yy",},},
     {"id":{"name":"obj_main_enemy","path":"objects/obj_main_enemy/obj_main_enemy.yy",},},
     {"id":{"name":"obj_meatball","path":"objects/obj_meatball/obj_meatball.yy",},},
     {"id":{"name":"obj_physics_actor","path":"objects/obj_physics_actor/obj_physics_actor.yy",},},
@@ -37,8 +42,10 @@
     {"id":{"name":"rm_1","path":"rooms/rm_1/rm_1.yy",},},
     {"id":{"name":"rm_start","path":"rooms/rm_start/rm_start.yy",},},
     {"id":{"name":"rm_template","path":"rooms/rm_template/rm_template.yy",},},
+    {"id":{"name":"scr_game_start","path":"scripts/scr_game_start/scr_game_start.yy",},},
     {"id":{"name":"scr_get_controls","path":"scripts/scr_get_controls/scr_get_controls.yy",},},
     {"id":{"name":"scr_player_death","path":"scripts/scr_player_death/scr_player_death.yy",},},
+    {"id":{"name":"spr_glare","path":"sprites/spr_glare/spr_glare.yy",},},
     {"id":{"name":"spr_main_enemy","path":"sprites/spr_main_enemy/spr_main_enemy.yy",},},
     {"id":{"name":"spr_meatball","path":"sprites/spr_meatball/spr_meatball.yy",},},
     {"id":{"name":"spr_player_slide","path":"sprites/spr_player_slide/spr_player_slide.yy",},},
@@ -48,9 +55,9 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"rm_start","path":"rooms/rm_start/rm_start.yy",},},
     {"roomId":{"name":"rm_1","path":"rooms/rm_1/rm_1.yy",},},
     {"roomId":{"name":"rm_template","path":"rooms/rm_template/rm_template.yy",},},
-    {"roomId":{"name":"rm_start","path":"rooms/rm_start/rm_start.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

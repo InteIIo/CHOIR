@@ -1,12 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_physics_actor",
+  "%Name":"obj_hallucinations",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_physics_actor",
+  "name":"obj_hallucinations",
   "overriddenProperties":[],
   "parent":{
     "name":"Abstract and Controllers",
