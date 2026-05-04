@@ -1,4 +1,4 @@
-cam_width = camera_get_view_width(view_camera[0])
-cam_height = camera_get_view_height(view_camera[0])
+cam_width = 5120;
+cam_height = 2880;
 
 follow = obj_player;

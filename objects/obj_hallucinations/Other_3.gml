@@ -1,0 +1,1 @@
+time_source_stop(spawn_timer);

@@ -9,23 +9,24 @@ move_spd = 35;
 walk_spd = 20;
 run_spd = 40;
 prev_spd = 0;
-drag = 0.3;
-accel = 0.3;
+drag = 1;
+accel = 0.4;
 
 vault_timer = 0;
 vault_input_window = 12;
 vault_height =  64;
-vault_boost_spd = 7;
+vault_boost_spd = 30;
 
 jump_force = 7;
 jump_timer = 0;
 jump_time = 10;
 
-wall_stick_timer = 0;
-wall_stick_time = 30;
+push_timer = 0;
+push_time = 20;
+
 #endregion
 
-hp_bar_length = 1280;
+hp_bar_length = display_get_gui_width()/4;
 max_hp = 100;
 injury = 0;
 insanity = 0;
@@ -40,8 +41,11 @@ enum player_states {
 	
 	vault,
 	
-	on_wall,
-	wall_jump
+	push,
+	
+	wall_jump,
+	
+
 }
 state = player_states.def;
 
@@ -55,4 +59,11 @@ function do_jump() {
 		vel_y -= jump_force;
 	if keyboard_check_released(vk_space) {vel_y = -1;}
 	} else {jump_timer = 0;}
+}
+
+function do_push() {
+	if push_pressed {
+		push_timer = push_time;
+		state = player_states.push;
+	}
 }

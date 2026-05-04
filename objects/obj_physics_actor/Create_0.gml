@@ -43,3 +43,5 @@ function move_vertical() {
 		on_ground = false;
 	}
 }
+
+depth = -1;

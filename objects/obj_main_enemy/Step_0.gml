@@ -6,7 +6,7 @@ if active {
 	spd += 0.01;
 
 	if place_meeting(x, y, obj_player) {
-		room_restart();
+		scr_player_death();
 	}
 
 	event_inherited();

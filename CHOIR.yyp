@@ -48,6 +48,7 @@
     {"id":{"name":"spr_glare","path":"sprites/spr_glare/spr_glare.yy",},},
     {"id":{"name":"spr_main_enemy","path":"sprites/spr_main_enemy/spr_main_enemy.yy",},},
     {"id":{"name":"spr_meatball","path":"sprites/spr_meatball/spr_meatball.yy",},},
+    {"id":{"name":"spr_player_push","path":"sprites/spr_player_push/spr_player_push.yy",},},
     {"id":{"name":"spr_player_slide","path":"sprites/spr_player_slide/spr_player_slide.yy",},},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
     {"id":{"name":"spr_solid","path":"sprites/spr_solid/spr_solid.yy",},},
