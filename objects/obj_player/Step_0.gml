@@ -16,7 +16,6 @@ switch (state) {
 		do_jump();
 		
 		if (run && move_dir != 0) {state = player_states.run;}
-		
 		break;
 	}
 	
@@ -33,6 +32,9 @@ switch (state) {
 		        vault_timer = vault_input_window;
 		        state = player_states.vault;
 		    }
+			else {
+				state = player_states.wall_run;
+			}
 		}
 		
 		do_push();
@@ -76,7 +78,6 @@ switch (state) {
 		break;
 	}
 
-
 	case(player_states.wall_jump) : {
 		jump_timer--;
 		if jump_timer <= 0 || on_ground {state = player_states.run;}
@@ -97,6 +98,30 @@ switch (state) {
 		}
 		push_timer--;
 		if push_timer <= 0 {state = player_states.run;}
+		break;
+	}
+
+	case(player_states.wall_run) : {
+		vel_y = -move_spd;
+		if !place_meeting(x+face_dir, y, solids) || move_dir != face_dir {
+			state = player_states.def;
+			
+			if !place_meeting(x+face_dir, y-vault_height, solids) {
+		        y -= vault_height;
+		        vault_timer = vault_input_window;
+		        state = player_states.vault;
+		    }
+			
+		}
+		
+		if jump_pressed {
+			face_dir = -face_dir;
+			move_spd += vault_boost_spd;
+			jump_timer = jump_time;
+			state = player_states.wall_jump;
+		}
+		
+		break;
 	}
 
 }

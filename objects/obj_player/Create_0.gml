@@ -14,7 +14,7 @@ accel = 0.4;
 
 vault_timer = 0;
 vault_input_window = 12;
-vault_height =  64;
+vault_height = 96;
 vault_boost_spd = 30;
 
 jump_force = 7;
@@ -44,8 +44,8 @@ enum player_states {
 	push,
 	
 	wall_jump,
-	
-
+	wall_run,
+	wall_run_background
 }
 state = player_states.def;
 
