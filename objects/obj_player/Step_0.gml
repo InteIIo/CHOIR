@@ -11,7 +11,6 @@ switch (state) {
 		move_spd = walk_spd;
 		if move_dir != 0 {face_dir = move_dir;}
 		vel_x = move_dir*move_spd;
-		do_push();
 		
 		do_jump();
 		
@@ -37,8 +36,6 @@ switch (state) {
 			}
 		}
 		
-		do_push();
-		
 		if move_spd > run_spd {move_spd -= drag}
 		else {move_spd += accel;}
 		break;
@@ -62,7 +59,6 @@ switch (state) {
 		vel_x = move_spd*face_dir;
 		move_spd -= 3;
 		if (abs(vel_x) <= 3) {state = player_states.def;}
-		do_push();
 		break;
 	}
 	
@@ -85,19 +81,6 @@ switch (state) {
 		vel_x = face_dir*move_spd;
 		if move_spd > run_spd {move_spd -= drag}
 		else {move_spd += accel;}
-		break;
-	}
-
-	case(player_states.push) : {
-		sprite_index = spr_player_push;
-		if place_meeting(x+face_dir, y, obj_solid) {
-			face_dir = -face_dir;
-			move_spd += vault_boost_spd;
-			jump_timer = jump_time;
-			state = player_states.wall_jump;
-		}
-		push_timer--;
-		if push_timer <= 0 {state = player_states.run;}
 		break;
 	}
 

@@ -41,8 +41,6 @@ enum player_states {
 	
 	vault,
 	
-	push,
-	
 	wall_jump,
 	wall_run,
 	wall_run_background
@@ -59,11 +57,4 @@ function do_jump() {
 		vel_y -= jump_force;
 	if keyboard_check_released(vk_space) {vel_y = -1;}
 	} else {jump_timer = 0;}
-}
-
-function do_push() {
-	if push_pressed {
-		push_timer = push_time;
-		state = player_states.push;
-	}
 }
