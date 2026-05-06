@@ -21,8 +21,8 @@ jump_force = 7;
 jump_timer = 0;
 jump_time = 10;
 
-push_timer = 0;
-push_time = 20;
+wallrun_timer = 0;
+wallrun_time = 15;
 
 #endregion
 

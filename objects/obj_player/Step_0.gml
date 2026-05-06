@@ -1,5 +1,5 @@
 get_controls();
-if keyboard_check_pressed(vk_f5) {room_restart();}
+if keyboard_check_pressed(vk_f5) {game_restart();}
 //Update consistant values
 move_dir = right - left;
 hp = max_hp - injury - insanity;
@@ -32,6 +32,7 @@ switch (state) {
 		        state = player_states.vault;
 		    }
 			else {
+				wallrun_timer = wallrun_time;
 				state = player_states.wall_run;
 			}
 		}
@@ -67,7 +68,7 @@ switch (state) {
 		if !on_ground {vel_y += grav}
 		
 		sprite_index = spr_player_slide;
-		if (!down) {state = player_states.run;}
+		if (!down && !place_meeting(x, y-sprite_height, solids)) {state = player_states.run;}
 		
 		if move_spd > run_spd {move_spd -= drag;}
 		else {move_spd = run_spd;}
@@ -97,7 +98,8 @@ switch (state) {
 			
 		}
 		
-		if jump_pressed {
+		wallrun_timer--;
+		if jump_pressed || wallrun_timer <= 0{
 			face_dir = -face_dir;
 			move_spd += vault_boost_spd;
 			jump_timer = jump_time;
@@ -106,7 +108,26 @@ switch (state) {
 		
 		break;
 	}
-
+	
+	case(player_states.wall_run_background) : {
+		vel_x = face_dir*move_spd;
+		vel_y -= grav;
+		
+		if !place_meeting(x, y, obj_background_wall) || !jump {
+			vel_y -= jump_force*4;
+			move_spd += vault_boost_spd;
+			jump_timer = jump_time;
+			state = player_states.wall_jump;
+		}
+		break;
+	}
 }
+
+if place_meeting(x, y, obj_background_wall) && jump && x > instance_nearest(x, y, obj_background_wall).x {
+	vel_y = 0;
+	state = player_states.wall_run_background;
+}
+
+if move_spd > 200 {scr_player_death();}
 
 event_inherited();
