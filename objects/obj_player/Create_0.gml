@@ -9,13 +9,13 @@ move_spd = 35;
 walk_spd = 20;
 run_spd = 40;
 prev_spd = 0;
-drag = 1;
+drag = 0.8;
 accel = 0.4;
 
 vault_timer = 0;
 vault_input_window = 12;
 vault_height = 96;
-vault_boost_spd = 30;
+vault_boost_spd = 25;
 
 jump_force = 7;
 jump_timer = 0;
@@ -26,12 +26,19 @@ wallrun_time = 15;
 
 #endregion
 
+
+#region Health Stuff
 hp_bar_length = display_get_gui_width()/4;
 max_hp = 100;
 injury = 0;
 insanity = 0;
 hp = max_hp - insanity;
+#endregion
 
+inventory = array_create(6, undefined);
+inventory[0] = global.items.dagger;
+
+quickslot_index = 0;
 
 enum player_states {
 	def,
@@ -43,7 +50,12 @@ enum player_states {
 	
 	wall_jump,
 	wall_run,
-	wall_run_background
+	wall_run_background,
+	
+	in_inventory,
+	
+	//Item states
+	dagger_dash
 }
 state = player_states.def;
 

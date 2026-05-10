@@ -4,6 +4,7 @@ if keyboard_check_pressed(vk_f5) {game_restart();}
 move_dir = right - left;
 hp = max_hp - injury - insanity;
 
+//State machine (should probably clean up later)
 switch (state) {
 	case(player_states.def) : {
 		sprite_index = spr_player;
@@ -13,6 +14,8 @@ switch (state) {
 		vel_x = move_dir*move_spd;
 		
 		do_jump();
+		
+		if open_inventory {state = player_states.in_inventory;}
 		
 		if (run && move_dir != 0) {state = player_states.run;}
 		break;
@@ -65,7 +68,7 @@ switch (state) {
 	
 	case(player_states.slide) : {
 		vel_x = face_dir*move_spd;
-		if !on_ground {vel_y += grav}
+		if !on_ground {vel_y += grav*2}
 		
 		sprite_index = spr_player_slide;
 		if (!down && !place_meeting(x, y-sprite_height, solids)) {state = player_states.run;}
@@ -121,6 +124,18 @@ switch (state) {
 		}
 		break;
 	}
+		
+	case(player_states.in_inventory) : {
+		if open_inventory {state = player_states.def;}
+		break;
+	}
+	
+	case(player_states.dagger_dash) : {
+		vel_y = -grav;
+		vel_x = move_spd*2*face_dir;
+		jump_timer--;
+		if jump_timer <= 0 {state = player_states.run;}
+	}
 }
 
 if place_meeting(x, y, obj_background_wall) && jump && x > instance_nearest(x, y, obj_background_wall).x {
@@ -128,6 +143,13 @@ if place_meeting(x, y, obj_background_wall) && jump && x > instance_nearest(x, y
 	state = player_states.wall_run_background;
 }
 
-if move_spd > 200 {scr_player_death();}
+
+if swap_quickslot {quickslot_index ^= 1}
+if use_item {
+	if inventory[quickslot_index] != undefined {
+		inventory[quickslot_index].use();
+	}
+}
+
 
 event_inherited();

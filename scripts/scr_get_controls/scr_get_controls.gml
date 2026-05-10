@@ -10,6 +10,7 @@ function get_controls(){
 	run = keyboard_check(vk_shift);
 	run_pressed = keyboard_check_pressed(vk_shift);
 	
-	push = keyboard_check(ord("C"));
-	push_pressed = keyboard_check_pressed(ord("C"));
+	open_inventory = keyboard_check_pressed(ord("Z"));
+	swap_quickslot = keyboard_check_pressed(ord("X"));
+	use_item = keyboard_check_pressed(ord("C"));
 }
