@@ -14,9 +14,6 @@ switch (state) {
 		vel_x = move_dir*move_spd;
 		
 		do_jump();
-		
-		if open_inventory {state = player_states.in_inventory;}
-		
 		if (run && move_dir != 0) {state = player_states.run;}
 		break;
 	}
@@ -31,6 +28,7 @@ switch (state) {
 		if place_meeting(x+vel_x, y, solids) {
 		    if !place_meeting(x+vel_x, y-vault_height, solids) {
 		        y -= vault_height;
+				jump_timer = 0;
 		        vault_timer = vault_input_window;
 		        state = player_states.vault;
 		    }
@@ -124,11 +122,6 @@ switch (state) {
 		}
 		break;
 	}
-		
-	case(player_states.in_inventory) : {
-		if open_inventory {state = player_states.def;}
-		break;
-	}
 	
 	case(player_states.dagger_dash) : {
 		vel_y = -grav;
@@ -144,10 +137,16 @@ if place_meeting(x, y, obj_background_wall) && jump && x > instance_nearest(x, y
 }
 
 
-if swap_quickslot {quickslot_index ^= 1}
+var current_item = inventory[inventory_index];
+if swap_quickslot {inventory_index ^= 1}
 if use_item {
-	if inventory[quickslot_index] != undefined {
-		inventory[quickslot_index].use();
+	if current_item != undefined {
+		current_item.use();
+		current_item.durability--;
+		if current_item.durability <= 0 {
+			inventory[inventory_index] = undefined;
+			money += 30;
+		}
 	}
 }
 
