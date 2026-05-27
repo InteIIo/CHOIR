@@ -1,8 +1,14 @@
 event_inherited();
-rad = 1080;
 grav = 0;
 
-has_rushed = false;
 rush_spd = 60;
+rush_timer = 60;
+rush_time = 60;
+rush_target_x = obj_player.x;
+rush_target_y = obj_player.y;
 
 damage = 10;
+
+solids = [];
+
+do_damage = false;

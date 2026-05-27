@@ -43,7 +43,7 @@ global.items = {
 		1,
 		function() {
 			with obj_player {
-				instance_create_depth(x, y, -1, obj_grapple);
+				instance_create_depth(x, y-16, -1, obj_grapple);
 			}
 		}
 	)
