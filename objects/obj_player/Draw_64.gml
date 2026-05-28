@@ -12,6 +12,11 @@ if keyboard_check_pressed(vk_alt) {insanity+= 5}
 draw_text(32, 64, money);
 
 
+var backup = inventory[inventory_index ^ 1]
+if backup != undefined {
+	draw_sprite_ext(backup.sprite, 0, 16, 80, 1, 1, 0, c_ltgray, 0.5);
+}
+
 var equipped = inventory[inventory_index];
 if equipped != undefined {
 	draw_sprite(equipped.sprite, 0, 32, 128);

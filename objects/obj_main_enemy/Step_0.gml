@@ -3,7 +3,7 @@ if active {
 	vel_x = lengthdir_x(spd, dir);
 	vel_y = lengthdir_y(spd, dir);
 
-	spd += 0.1;
+	spd += 0.05;
 
 	if place_meeting(x, y, obj_player) {
 		scr_player_death();

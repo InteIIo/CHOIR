@@ -2,7 +2,7 @@ get_controls();
 if keyboard_check_pressed(vk_f5) {game_restart();}
 //Update consistant values
 move_dir = right - left;
-hp = max_hp - injury - insanity;
+
 
 //State machine (should probably clean up later)
 switch (state) {
@@ -60,6 +60,7 @@ switch (state) {
 		sprite_index = spr_player;
 		vel_x = move_spd*face_dir;
 		move_spd -= 3;
+		do_jump();
 		if (abs(vel_x) <= 3) {state = player_states.def;}
 		break;
 	}

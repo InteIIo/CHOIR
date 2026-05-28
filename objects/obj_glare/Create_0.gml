@@ -8,4 +8,4 @@ wake = function() {
 	instance_destroy();
 }
 
-call_later(1, time_source_units_seconds, wake, false);
+call_later(3, time_source_units_seconds, wake, false);

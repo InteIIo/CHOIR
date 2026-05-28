@@ -20,6 +20,8 @@ global.items = {
 		function() {
 			with obj_player {
 				jump_timer = jump_time;
+				face_dir = right - left;
+				if move_spd < run_spd {move_spd = run_spd}
 				state = player_states.dagger_dash;
 			}
 		}
@@ -43,7 +45,7 @@ global.items = {
 		1,
 		function() {
 			with obj_player {
-				instance_create_depth(x, y-16, -1, obj_grapple);
+				instance_create_depth(x, y-256, -1, obj_grapple);
 			}
 		}
 	)
@@ -51,11 +53,10 @@ global.items = {
 
 function inventory_add_item(_item) {
 	with obj_player {
-		for (var i = 0; i < array_length(inventory); i++) {
-			if inventory[i] == undefined {
-				inventory[i] = _item;
-				break;
-			}
+		if inventory[inventory_index] == undefined {
+			inventory[inventory_index] = _item;
+		} else if inventory[inventory_index ^ 1] == undefined {
+			inventory[inventory_index ^ 1] = _item;
 		}
 	}
 }

@@ -71,3 +71,9 @@ function do_jump() {
 	if keyboard_check_released(vk_space) {vel_y = -1;}
 	} else {jump_timer = 0;}
 }
+
+function take_damage(_damage = 1) {
+	injury += _damage;
+	hp = max_hp - injury - insanity;
+	if hp <= 0 {scr_player_death();}
+}

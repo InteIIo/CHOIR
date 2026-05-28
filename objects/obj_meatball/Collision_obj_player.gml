@@ -4,7 +4,7 @@ if do_damage {
 		vel_x = 0;
 		vel_y = 0;
 	} else {
-		other.injury += 20;
+		obj_player.take_damage(20);
 	}
 	do_damage = false;
 }
