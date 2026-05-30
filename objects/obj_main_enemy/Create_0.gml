@@ -1,6 +1,6 @@
 event_inherited();
 
-spd = 30;
+spd = 25;
 
 grav = 0;
 

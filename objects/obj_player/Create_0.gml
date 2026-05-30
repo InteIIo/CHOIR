@@ -9,19 +9,19 @@ move_spd = 35;
 walk_spd = 20;
 run_spd = 35;
 prev_spd = 0;
-drag = 0.8;
-accel = 0.4;
+drag = 0.65;
+accel = 0.35;
 
 vault_timer = 0;
 vault_input_window = 12;
 vault_height = 96;
-vault_boost_spd = 25;
+vault_boost_spd = 30;
 
 jump_force = 7;
 jump_timer = 0;
 jump_time = 10;
 jump_buffer_timer = 0;
-jump_buffer_time = 60;
+jump_buffer_time = 20;
 
 wallrun_timer = 0;
 wallrun_time = 15;
@@ -61,7 +61,10 @@ enum player_states {
 state = player_states.def;
 
 function do_jump() {
-	if jump_pressed && on_ground {
+	if jump_pressed {jump_buffer_timer = jump_buffer_time;}
+	if jump_buffer_timer > 0 {jump_buffer_timer--}
+	
+	if on_ground && jump_buffer_timer > 0 {
 		jump_timer = jump_time
 		vel_y = -2;
 		}

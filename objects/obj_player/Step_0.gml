@@ -3,7 +3,6 @@ if keyboard_check_pressed(vk_f5) {game_restart();}
 //Update consistant values
 move_dir = right - left;
 
-
 //State machine (should probably clean up later)
 switch (state) {
 	case(player_states.def) : {
@@ -22,6 +21,8 @@ switch (state) {
 		sprite_index = spr_player;
 		vel_x = move_dir*move_spd;
 		do_jump();
+
+
 		if (move_dir != face_dir || !run) {state = player_states.brake;}
 		if down {state = player_states.slide}
 		
@@ -58,9 +59,18 @@ switch (state) {
 	
 	case(player_states.brake) : {
 		sprite_index = spr_player;
+		
+		if jump_pressed && on_ground {
+			move_spd = run_spd;
+			vel_y = -70;
+			face_dir = move_dir;
+			state = player_states.run;
+		}
+		
 		vel_x = move_spd*face_dir;
 		move_spd -= 3;
-		do_jump();
+		
+		
 		if (abs(vel_x) <= 3) {state = player_states.def;}
 		break;
 	}
@@ -73,7 +83,6 @@ switch (state) {
 		if (!down && !place_meeting(x, y-sprite_height, solids)) {state = player_states.run;}
 		
 		if move_spd > run_spd {move_spd -= drag;}
-		else {move_spd = run_spd;}
 		break;
 	}
 
@@ -129,6 +138,7 @@ switch (state) {
 		vel_x = move_spd*2*face_dir;
 		jump_timer--;
 		if jump_timer <= 0 {state = player_states.run;}
+		break;
 	}
 }
 
